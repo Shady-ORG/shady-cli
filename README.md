@@ -2,15 +2,29 @@
 
 This repository contains a simple Python command line interface initialized with [Typer](https://typer.tiangolo.com/).
 
-## Usage
+## Installation
 
-After installing the package (e.g., `pip install -e .`), run:
+To make the `shady` command available globally, install the package:
 
 ```bash
-shady-cli --name Alice
+pip install .
 ```
 
-Or without installing:
+You can also use [pipx](https://pypa.github.io/pipx/) for an isolated install:
+
+```bash
+pipx install .
+```
+
+## Usage
+
+After installation, run:
+
+```bash
+shady --name Alice
+```
+
+Without installing, you can invoke the module directly:
 
 ```bash
 python -m shady_cli --name Alice
