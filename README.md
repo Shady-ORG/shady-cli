@@ -2,59 +2,56 @@
 
 This repository contains a simple Python command line interface initialized with [Typer](https://typer.tiangolo.com/).
 
-## Installation
+## Installation with Make
 
-To make the `shady` command available globally, install the package:
-
-```bash
-pip install .
-```
-
-You can also use [pipx](https://pypa.github.io/pipx/) for an isolated install:
+Use the Makefile to install everything needed for local usage:
 
 ```bash
-pipx install .
+make install
 ```
 
-## Usage
+`make install` will:
 
-After installation, run:
+- install/upgrade packaging dependencies (`pip`, `setuptools`, `wheel`)
+- install this project as a user CLI tool (`pip install --user -e .`)
+- add an alias to both `~/.bashrc` and `~/.zshrc`:
+
+```bash
+alias shady="shady-cli"
+```
+
+Reload your shell after installation:
+
+```bash
+source ~/.bashrc
+# or
+source ~/.zshrc
+```
+
+Then run:
 
 ```bash
 shady --name Alice
 ```
 
-Without installing, you can invoke the module directly:
+## Uninstall
+
+To remove the CLI and clean aliases from shell startup files:
 
 ```bash
-python -m shady_cli --name Alice
+make uninstall
 ```
 
-Check 
+## Without Make
+
+You can also install directly:
+
 ```bash
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.profile
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-source ~/.profile
-source ~/.bashrc
+python3 -m pip install --user -e .
 ```
 
-Check if installation worked
+Run with:
+
 ```bash
-echo $PATH | tr ':' '\n' | grep -x "$HOME/.local/bin" || echo "not installed"
-ls -l ~/.local/bin
-```
-
-Add this line to your ~/.bashrc or ~/.zshrc if you want a shorter cmd:
-```bash 
-alias shady="shady-cli"
-```
-
-Reload your shell config:
-```bash
-source ~/.bashrc
-```
-
-Now you can run:
-```bash
-shady --name Nolan
+shady-cli --name Alice
 ```
