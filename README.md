@@ -55,3 +55,23 @@ Run with:
 ```bash
 shady-cli --name Alice
 ```
+
+## Todos
+
+Create a todo item with a short text:
+
+```bash
+shady todo add "Buy milk"
+```
+
+Add a todo with additional Markdown content, edited in your `$EDITOR` (defaults to `vi`):
+
+```bash
+shady todo add "Plan meeting" --md
+```
+
+Show all saved todos:
+
+```bash
+shady todo list
+```

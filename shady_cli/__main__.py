@@ -2,13 +2,12 @@
 
 import typer
 
+from .hello import hello
+from .todo import app as todo_app
+
 app = typer.Typer()
-
-
-@app.command()
-def hello(name: str = "world") -> None:
-    """Greet the given NAME."""
-    typer.echo(f"Hello {name}!")
+app.command()(hello)
+app.add_typer(todo_app, name="todo")
 
 
 def main() -> None:
